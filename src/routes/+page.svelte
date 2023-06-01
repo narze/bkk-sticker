@@ -1,13 +1,57 @@
 <script lang="ts">
 	import Canvas from '../components/Canvas.svelte';
+	import Picker from 'vanilla-picker';
+	import { saveAs } from 'file-saver';
+	import { copyImageToClipboard } from 'copy-image-clipboard';
+	import * as htmlToImage from 'html-to-image';
+	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
 
 	let text: string = `${new Date().getMonth() + 1}`;
 	let color: string = '#ff7300';
 	let pickerRef: HTMLButtonElement;
+	let imageDom: HTMLElement;
 
-	function copyImage() {}
+	onMount(() => {
+		if (browser) {
+			const picker = new Picker({
+				parent: pickerRef,
+				color: color,
+				alpha: false
+			});
 
-	function saveImage() {}
+			picker.onChange = (pickedColor) => {
+				color = pickedColor.rgbString;
+			};
+		}
+	});
+
+	function copyImage() {
+		htmlToImage
+			.toPng(imageDom)
+			.then(function (dataUrl) {
+				const img = new Image();
+				img.src = dataUrl;
+				copyImageToClipboard(img.src);
+				// saving = false
+			})
+			.catch(function (error) {
+				console.error('oops, something went wrong!', error);
+				console.log(error.message);
+			});
+	}
+
+	function saveImage() {
+		htmlToImage
+			.toPng(imageDom)
+			.then(function (blob) {
+				saveAs(blob, `sunny-pass.png`);
+				// saving = false
+			})
+			.catch(function (error) {
+				console.error('oops, something went wrong!', error);
+			});
+	}
 </script>
 
 <div class="container hero">
@@ -45,7 +89,7 @@
 		/>
 	</div>
 
-	<Canvas bind:color bind:text />
+	<Canvas bind:color bind:text bind:imageDom />
 </div>
 
 <style lang="postcss">

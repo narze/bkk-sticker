@@ -1,12 +1,14 @@
 <script lang="ts">
 	export let color: string = '#ff7300';
 	export let text: string = '';
+	export let imageDom: HTMLElement;
 
 	const thaiNumerals = ['๐', '๑', '๒', '๓', '๔', '๕', '๖', '๗', '๘', '๙'];
 	$: transformedText = text.replace(/\d/g, (digit) => thaiNumerals[parseInt(digit)]);
 </script>
 
 <div
+	bind:this={imageDom}
 	class="flex items-center justify-center relative w-full max-w-5xl aspect-square mx-auto overflow-visible"
 >
 	<div class="w-full absolute inset-0 aspect-square bg-transparent" id="img">
@@ -36,35 +38,30 @@
 
 		<div
 			class="z-20 absolute text-[#675cee] inset-x-0 text-center bottom-[13%] text-[5rem] font-bold w-full"
-			,
 		>
 			{transformedText}
 		</div>
 
 		<div
 			class="z-10 absolute text-white inset-x-0 text-center bottom-[calc(13%-4px)] pl-[8px] text-[5rem] font-bold w-full"
-			,
 		>
 			{transformedText}
 		</div>
 
 		<div
 			class="z-10 absolute text-white inset-x-0 text-center bottom-[calc(13%+4px)] pr-[8px] text-[5rem] font-bold w-full"
-			,
 		>
 			{transformedText}
 		</div>
 
 		<div
 			class="z-10 absolute text-white inset-x-0 text-center bottom-[calc(13%+4px)] pl-[8px] text-[5rem] font-bold w-full"
-			,
 		>
 			{transformedText}
 		</div>
 
 		<div
 			class="z-10 absolute text-white inset-x-0 text-center bottom-[calc(13%-4px)] pr-[8px] text-[5rem] font-bold w-full"
-			,
 		>
 			{transformedText}
 		</div>

@@ -14,6 +14,9 @@ devDependencies:
   '@sveltejs/kit':
     specifier: ^1.5.0
     version: 1.20.0(svelte@3.59.1)(vite@4.3.9)
+  '@types/file-saver':
+    specifier: ^2.0.5
+    version: 2.0.5
   '@typescript-eslint/eslint-plugin':
     specifier: ^5.45.0
     version: 5.59.8(@typescript-eslint/parser@5.59.8)(eslint@8.41.0)(typescript@5.0.4)
@@ -23,6 +26,9 @@ devDependencies:
   autoprefixer:
     specifier: ^10.4.14
     version: 10.4.14(postcss@8.4.24)
+  copy-image-clipboard:
+    specifier: ^2.1.2
+    version: 2.1.2
   eslint:
     specifier: ^8.28.0
     version: 8.41.0
@@ -32,6 +38,12 @@ devDependencies:
   eslint-plugin-svelte:
     specifier: ^2.26.0
     version: 2.30.0(eslint@8.41.0)(svelte@3.59.1)
+  file-saver:
+    specifier: ^2.0.5
+    version: 2.0.5
+  html-to-image:
+    specifier: ^1.11.11
+    version: 1.11.11
   postcss:
     specifier: ^8.4.23
     version: 8.4.24
@@ -62,6 +74,9 @@ devDependencies:
   typescript:
     specifier: ^5.0.0
     version: 5.0.4
+  vanilla-picker:
+    specifier: ^2.12.1
+    version: 2.12.1
   vite:
     specifier: ^4.3.0
     version: 4.3.9(@types/node@20.2.5)
@@ -401,6 +416,10 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
+  /@sphinxxxx/color-conversion@2.2.2:
+    resolution: {integrity: sha512-XExJS3cLqgrmNBIP3bBw6+1oQ1ksGjFh0+oClDKFYpCCqx/hlqwWO5KO/S63fzUo67SxI9dMrF0y5T/Ey7h8Zw==}
+    dev: true
+
   /@sveltejs/adapter-auto@2.1.0(@sveltejs/kit@1.20.0):
     resolution: {integrity: sha512-o2pZCfATFtA/Gw/BB0Xm7k4EYaekXxaPGER3xGSY3FvzFJGTlJlZjBseaXwYSM94lZ0HniOjTokN3cWaLX6fow==}
     peerDependencies:
@@ -486,6 +505,10 @@ packages:
 
   /@types/cookie@0.5.1:
     resolution: {integrity: sha512-COUnqfB2+ckwXXSFInsFdOAWQzCCx+a5hq2ruyj+Vjund94RJQd4LG2u9hnvJrTgunKAaax7ancBYlDrNYxA0g==}
+    dev: true
+
+  /@types/file-saver@2.0.5:
+    resolution: {integrity: sha512-zv9kNf3keYegP5oThGLaPk8E081DFDuwfqjtiTzm6PoxChdJ1raSuADf2YGCVIyrSynLrgc8JWv296s7Q7pQSQ==}
     dev: true
 
   /@types/json-schema@7.0.12:
@@ -843,6 +866,10 @@ packages:
     engines: {node: '>= 0.6'}
     dev: true
 
+  /copy-image-clipboard@2.1.2:
+    resolution: {integrity: sha512-3VCXVl2IpFfOyD8drv9DozcNlwmqBqxOlsgkEGyVAzadjlPk1go8YNZyy8QmTnwHPxSFpeCR9OdsStEdVK7qDA==}
+    dev: true
+
   /cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
@@ -1147,6 +1174,10 @@ packages:
       flat-cache: 3.0.4
     dev: true
 
+  /file-saver@2.0.5:
+    resolution: {integrity: sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==}
+    dev: true
+
   /fill-range@7.0.1:
     resolution: {integrity: sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==}
     engines: {node: '>=8'}
@@ -1283,6 +1314,10 @@ packages:
     engines: {node: '>= 0.4.0'}
     dependencies:
       function-bind: 1.1.1
+    dev: true
+
+  /html-to-image@1.11.11:
+    resolution: {integrity: sha512-9gux8QhvjRO/erSnDPv28noDZcPZmYE7e1vFsBLKLlRlKDSqNJYebj6Qz1TGd5lsRV+X+xYyjCKjuZdABinWjA==}
     dev: true
 
   /ignore@5.2.4:
@@ -2213,6 +2248,12 @@ packages:
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+    dev: true
+
+  /vanilla-picker@2.12.1:
+    resolution: {integrity: sha512-2qrEP9VYylKXbyzXKsbu2dferBTvqnlsr29XjHwFE+/MEp0VNj6oEUESLDtKZ7DWzGdSv1x/+ujqFZF+KsO3cg==}
+    dependencies:
+      '@sphinxxxx/color-conversion': 2.2.2
     dev: true
 
   /vite@4.3.9(@types/node@20.2.5):
