@@ -103,29 +103,9 @@
 		gap: 40px;
 	}
 
-	.hero p {
-		color: white;
-		margin: 0;
-		font-size: 1rem;
-	}
-
-	.button-group {
-		display: flex;
-		flex-direction: row;
-		gap: 24px;
-	}
-
-	.label {
-		drop-shadow: 0 1.2px 1.2px rgba(0, 0, 0, 0.8);
-	}
-
 	@media screen and (min-width: 768px) {
 		.hero {
 			gap: 60px;
-		}
-
-		.hero p {
-			font-size: 1.3rem;
 		}
 	}
 </style>

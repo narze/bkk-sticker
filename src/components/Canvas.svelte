@@ -19,7 +19,7 @@
 		bind:clientWidth={domWidth}
 		class="w-full absolute inset-0 aspect-square bg-transparent"
 	>
-		<div class="absolute text-black inset-0 w-full aspect-square">
+		<div class="z-0 absolute text-black inset-0 w-full aspect-square">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				version="1.1"
@@ -38,7 +38,7 @@
 
 		<img
 			src="/images/sunny-template.png"
-			class="absolute inset-0 w-full aspect-square"
+			class="z-10 absolute inset-0 w-full aspect-square"
 			alt="template"
 		/>
 
