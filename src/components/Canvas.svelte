@@ -7,8 +7,6 @@
 	$: transformedText = text.replace(/\d/g, (digit) => thaiNumerals[parseInt(digit)]);
 
 	let domWidth: number;
-	$: textSize = domWidth * 0.15;
-	$: shadowOffset = textSize / 12;
 </script>
 
 <div

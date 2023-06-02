@@ -12,6 +12,8 @@
 	let pickerRef: HTMLButtonElement;
 	let imageDom: HTMLElement;
 
+	$: shareUrl = `https://sunny-pass.vercel.app/i?t=${text}&c=${color.replace('#', '')}`;
+
 	onMount(() => {
 		if (browser) {
 			const picker = new Picker({
@@ -21,7 +23,7 @@
 			});
 
 			picker.onChange = (pickedColor) => {
-				color = pickedColor.rgbString;
+				color = pickedColor.hex.substring(0, 7);
 			};
 		}
 	});
@@ -90,6 +92,8 @@
 	</div>
 
 	<Canvas bind:color bind:text bind:imageDom />
+
+	<input value={shareUrl} readonly class="text-black w-64" />
 </div>
 
 <style lang="postcss">
