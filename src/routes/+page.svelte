@@ -8,13 +8,15 @@
 	import { Facebook, Twitter } from 'svelte-share-buttons-component';
 
 	import { browser } from '$app/environment';
+	import { page } from '$app/stores';
 
-	let text: string = `${new Date().getMonth() + 1}`;
-	let color: string = '#ff7300';
+	let text: string = $page.url.searchParams.get('t') || `${new Date().getMonth() + 1}`;
+	let color: string = `#${$page.url.searchParams.get('c') || 'ff7300'}`;
 	let pickerRef: HTMLButtonElement;
 	let imageDom: HTMLElement;
 
-	$: url = `https://sunny-pass.vercel.app/i?t=${text}&c=${color.replace('#', '')}`;
+	$: ogImageUrl = `https://sunny-pass.vercel.app/i?t=${text}&c=${color.replace('#', '')}`;
+	$: shareUrl = `https://sunny-pass.vercel.app?t=${text}&c=${color.replace('#', '')}`;
 
 	onMount(() => {
 		if (browser) {
@@ -72,10 +74,10 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
-	<meta property="og:image" content={url} />
+	<meta property="og:image" content={ogImageUrl} />
 	<meta name="twitter:title" content={title} />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:image" content={url} />
+	<meta name="twitter:image" content={ogImageUrl} />
 </svelte:head>
 
 <div class="container hero">
@@ -115,8 +117,8 @@
 
 	<div class="flex gap-2 justify-center items-center w-full bottom-4 center">
 		<span class="text-lg"> Share: </span>
-		<Facebook class="h-10 w-10 rounded" {url} quote="สร้างสติ๊กเกอร์ของคุณได้ที่นี่" />
-		<Twitter class="h-10 w-10 rounded" {url} text="สร้างสติ๊กเกอร์ของคุณได้ที่นี่" />
+		<Facebook class="h-10 w-10 rounded" url={shareUrl} quote="สร้างสติ๊กเกอร์ของคุณได้ที่นี่" />
+		<Twitter class="h-10 w-10 rounded" url={shareUrl} text="สร้างสติ๊กเกอร์ของคุณได้ที่นี่" />
 	</div>
 
 	<Canvas bind:color bind:text bind:imageDom />
