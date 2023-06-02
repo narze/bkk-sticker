@@ -5,6 +5,8 @@
 	import { copyImageToClipboard } from 'copy-image-clipboard';
 	import * as htmlToImage from 'html-to-image';
 	import { onMount } from 'svelte';
+	import { Facebook, Twitter } from 'svelte-share-buttons-component';
+
 	import { browser } from '$app/environment';
 
 	let text: string = `${new Date().getMonth() + 1}`;
@@ -12,7 +14,7 @@
 	let pickerRef: HTMLButtonElement;
 	let imageDom: HTMLElement;
 
-	$: shareUrl = `https://sunny-pass.vercel.app/i?t=${text}&c=${color.replace('#', '')}`;
+	$: url = `https://sunny-pass.vercel.app/i?t=${text}&c=${color.replace('#', '')}`;
 
 	onMount(() => {
 		if (browser) {
@@ -54,7 +56,27 @@
 				console.error('oops, something went wrong!', error);
 			});
 	}
+
+	// OG
+	const title = 'Sunny Pass';
+	const description = 'แคล้วคลาดปลอดภัย';
 </script>
+
+<svelte:head>
+	<title>{title}</title>
+
+	<meta name="title" content={title} />
+	<meta name="description" content={description} />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta property="og:url" content={'https://sunny-pass.vercel.app'} />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:image" content={url} />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content={url} />
+</svelte:head>
 
 <div class="container hero">
 	<h1 class="text-6xl">
@@ -91,9 +113,13 @@
 		/>
 	</div>
 
-	<Canvas bind:color bind:text bind:imageDom />
+	<div class="flex gap-2 justify-center items-center w-full bottom-4 center">
+		<span class="text-lg"> Share: </span>
+		<Facebook class="h-10 w-10 rounded" {url} quote="สร้างสติ๊กเกอร์ของคุณได้ที่นี่" />
+		<Twitter class="h-10 w-10 rounded" {url} text="สร้างสติ๊กเกอร์ของคุณได้ที่นี่" />
+	</div>
 
-	<input value={shareUrl} readonly class="text-black w-64" />
+	<Canvas bind:color bind:text bind:imageDom />
 </div>
 
 <style lang="postcss">
