@@ -1,3 +1,5 @@
+// https://github.com/etherCorps/sveltekit-og
+
 import satori, { type SatoriOptions } from 'satori';
 import { Resvg, type ResvgRenderOptions } from '@resvg/resvg-js';
 import type { SvelteComponent } from 'svelte';

@@ -1,3 +1,5 @@
+// https://github.com/etherCorps/sveltekit-og
+
 import { parse, walk } from 'svelte/compiler';
 import type { Ast } from 'svelte/types/compiler/interfaces';
 
