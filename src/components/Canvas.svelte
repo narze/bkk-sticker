@@ -41,7 +41,11 @@
 		/>
 
 		<div class="z-20 absolute inset-x-0 font-bold w-full">
-			<svg id="transformedText" viewBox="0 0 900 900" style={'font-size: 100px'}>
+			<svg
+				id="transformedText"
+				viewBox="0 0 900 900"
+				style={'font-size: 100px; font-family: NotoSerifThai-Bold;'}
+			>
 				<text
 					class="stroked text-center"
 					y="80%"
