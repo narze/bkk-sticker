@@ -6,17 +6,28 @@
 	import * as htmlToImage from 'html-to-image';
 	import { onMount } from 'svelte';
 	import { Facebook, Twitter } from 'svelte-share-buttons-component';
+	import * as base64 from 'base64util';
 
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 
-	let text: string = $page.url.searchParams.get('t') || `${new Date().getMonth() + 1}`;
-	let color: string = `#${$page.url.searchParams.get('c') || 'ff7300'}`;
+	let data = $page.url.searchParams.get('d') || '';
+	let decodedData = data.split(',').map((d) => {
+		try {
+			return base64.urlDecode(d);
+		} catch (e) {
+			return null;
+		}
+	});
+
+	let text: string = decodedData[0] || `${new Date().getMonth() + 1}`;
+	let color: string = decodedData[1] || '#ff7300';
 	let pickerRef: HTMLButtonElement;
 	let imageDom: HTMLElement;
 
 	$: ogImageUrl = `https://sunny-pass.vercel.app/i?t=${text}&c=${color.replace('#', '')}`;
-	$: shareUrl = `https://sunny-pass.vercel.app?t=${text}&c=${color.replace('#', '')}`;
+	$: encodedData = `${base64.urlEncode(text)},${base64.urlEncode(color)}`;
+	$: shareUrl = `https://sunny-pass.vercel.app?d=${encodedData}`;
 
 	onMount(() => {
 		if (browser) {
@@ -117,7 +128,7 @@
 
 	<div class="flex gap-2 justify-center items-center w-full bottom-4 center">
 		<span class="text-lg"> Share: </span>
-		<Facebook class="h-10 w-10 rounded" url={shareUrl} quote="สร้างสติ๊กเกอร์ของคุณได้ที่นี่" />
+		<Facebook class="h-10 w-10 rounded" url={shareUrl} text="สร้างสติ๊กเกอร์ของคุณได้ที่นี่" />
 		<Twitter class="h-10 w-10 rounded" url={shareUrl} text="สร้างสติ๊กเกอร์ของคุณได้ที่นี่" />
 	</div>
 
