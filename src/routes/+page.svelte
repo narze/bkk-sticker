@@ -128,6 +128,14 @@
 	</div>
 
 	<Canvas bind:color bind:text bind:imageDom />
+
+	<!-- Credits -->
+	<div class="text-center text-sm text-gray-500">
+		Credits: <a
+			href="https://www.facebook.com/TheNickplus/posts/pfbid0bewW8HjvXtQi6ZwbmWro6XGEbHjE9nyXt44viBYAWGWMnLxGNQ5xX37hZQs1PaaUl"
+			>Image</a
+		>, Font Sao Chingcha
+	</div>
 </div>
 
 <style lang="postcss">
