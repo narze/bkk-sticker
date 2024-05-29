@@ -20,7 +20,8 @@
 		}
 	});
 
-	let text: string = decodedData[0] || `กรุงเทพฯ · Bangkok`;
+	const defaultText = 'กรุงเทพฯ · Bangkok';
+	let text: string = decodedData[0] || defaultText;
 	let color: string = decodedData[1] || '#fff';
 	let pickerRef: HTMLButtonElement;
 	let imageDom: HTMLElement;
@@ -40,6 +41,14 @@
 			picker.onChange = (pickedColor) => {
 				color = pickedColor.hex.substring(0, 7);
 			};
+
+			// Gradually add text
+			text = '';
+			defaultText.split('').forEach((char, index) => {
+				setTimeout(() => {
+					text += char;
+				}, 42 * index);
+			});
 		}
 	});
 
@@ -112,29 +121,36 @@
 		</button>
 	</div>
 
-	<div class="flex items-center justify-center text-black">
+	<div class="flex items-center justify-center text-black w-4/5">
 		<input
 			type="text"
 			bind:value={text}
-			placeholder="เดือน (?)"
-			class="text-center rounded p-2 text-xl"
+			placeholder=""
+			class="text-center rounded p-2 text-lg w-full"
 		/>
 	</div>
 
 	<div class="flex gap-2 justify-center items-center w-full bottom-4 center">
 		<span class="text-lg"> Share: </span>
-		<Facebook class="h-10 w-10 rounded" url={shareUrl} text="สร้างสติ๊กเกอร์ของคุณได้ที่นี่" />
-		<Twitter class="h-10 w-10 rounded" url={shareUrl} text="สร้างสติ๊กเกอร์ของคุณได้ที่นี่" />
+		<Facebook class="h-10 w-10 rounded" url={shareUrl} text="" />
+		<Twitter class="h-10 w-10 rounded" url={shareUrl} text="" />
 	</div>
 
 	<Canvas bind:color bind:text bind:imageDom />
 
 	<!-- Credits -->
-	<div class="text-center text-sm text-gray-500">
-		Credits: <a
-			href="https://www.facebook.com/TheNickplus/posts/pfbid0bewW8HjvXtQi6ZwbmWro6XGEbHjE9nyXt44viBYAWGWMnLxGNQ5xX37hZQs1PaaUl"
-			>Image</a
-		>, Font Sao Chingcha
+	<div>
+		<div class="text-center text-sm text-gray-500">
+			Credits: <a
+				href="https://www.facebook.com/TheNickplus/posts/pfbid0bewW8HjvXtQi6ZwbmWro6XGEbHjE9nyXt44viBYAWGWMnLxGNQ5xX37hZQs1PaaUl"
+				>Image</a
+			>, Font Sao Chingcha
+		</div>
+
+		<!-- Github -->
+		<div class="text-center text-sm text-gray-500">
+			<a href="https://github.com/narze/bkk-sticker">Github</a>
+		</div>
 	</div>
 </div>
 
