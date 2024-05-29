@@ -20,14 +20,14 @@
 		}
 	});
 
-	let text: string = decodedData[0] || `${new Date().getMonth() + 1}`;
-	let color: string = decodedData[1] || '#ff7300';
+	let text: string = decodedData[0] || `กรุงเทพ - Bangkok`;
+	let color: string = decodedData[1] || '#fff';
 	let pickerRef: HTMLButtonElement;
 	let imageDom: HTMLElement;
 
-	$: ogImageUrl = `https://sunny-pass.vercel.app/i?t=${text}&c=${color.replace('#', '')}`;
+	$: ogImageUrl = `https://bkk-sticker.vercel.app/i?t=${text}&c=${color.replace('#', '')}`;
 	$: encodedData = `${base64.urlEncode(text)},${base64.urlEncode(color)}`;
-	$: shareUrl = `https://sunny-pass.vercel.app?d=${encodedData}`;
+	$: shareUrl = `https://bkk-sticker.vercel.app?d=${encodedData}`;
 
 	onMount(() => {
 		if (browser) {
@@ -62,7 +62,7 @@
 		htmlToImage
 			.toPng(imageDom)
 			.then(function (blob) {
-				saveAs(blob, `sunny-pass.png`);
+				saveAs(blob, `bkk-sticker.png`);
 				// saving = false
 			})
 			.catch(function (error) {
@@ -71,8 +71,8 @@
 	}
 
 	// OG
-	const title = 'Sunny Pass';
-	const description = 'แคล้วคลาดปลอดภัย';
+	const title = 'Bkk Sticker';
+	const description = '';
 </script>
 
 <svelte:head>
@@ -81,7 +81,7 @@
 	<meta name="title" content={title} />
 	<meta name="description" content={description} />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta property="og:url" content={'https://sunny-pass.vercel.app'} />
+	<meta property="og:url" content={'https://bkk-sticker.vercel.app'} />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
@@ -92,12 +92,7 @@
 </svelte:head>
 
 <div class="container hero">
-	<h1 class="text-6xl">
-		<span class="highlight">Sunny</span> Pass
-		<div class="text-3xl mt-2">
-			แคล้วคลาด<span class="highlight">พ้นภัย</span>
-		</div>
-	</h1>
+	<h1 class="text-6xl">Bkk Sticker</h1>
 
 	<div class="flex gap-4">
 		<button bind:this={pickerRef} class="bg-blue-500 hover: text-white font-bold py-2 px-4 rounded">
