@@ -20,7 +20,7 @@
 		}
 	});
 
-	let text: string = decodedData[0] || `กรุงเทพ - Bangkok`;
+	let text: string = decodedData[0] || `กรุงเทพฯ · Bangkok`;
 	let color: string = decodedData[1] || '#fff';
 	let pickerRef: HTMLButtonElement;
 	let imageDom: HTMLElement;
