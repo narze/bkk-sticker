@@ -25,6 +25,7 @@
 	let color: string = decodedData[1] || '#fff';
 	let pickerRef: HTMLButtonElement;
 	let imageDom: HTMLElement;
+	let bgColor = 'rgba(0, 0, 0, 0)';
 
 	$: ogImageUrl = `https://bkk-sticker.vercel.app/i?t=${text}&c=${color.replace('#', '')}`;
 	$: encodedData = `${base64.urlEncode(text)},${base64.urlEncode(color)}`;
@@ -137,7 +138,7 @@
 		<Twitter class="h-10 w-10 rounded" url={shareUrl} text="" />
 	</div>
 
-	<Canvas bind:color bind:text bind:imageDom />
+	<Canvas bind:color bind:text bind:imageDom bind:bgColor />
 
 	<!-- Credits -->
 	<div>

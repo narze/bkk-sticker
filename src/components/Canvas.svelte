@@ -1,5 +1,6 @@
 <script lang="ts">
 	export let color = '#fff';
+	export let bgColor = 'rgba(0, 0, 0, 0)';
 	export let text = '';
 	export let imageDom: HTMLElement;
 
@@ -18,30 +19,29 @@
 		updateFontSizeAndPosition();
 	}
 
+	import { onDestroy, onMount } from 'svelte';
 	onMount(() => {
 		window.addEventListener('resize', updateFontSizeAndPosition);
 
 		updateFontSizeAndPosition();
 	});
 
-	import { onDestroy, onMount } from 'svelte';
 	onDestroy(() => {
 		window.removeEventListener('resize', updateFontSizeAndPosition);
 	});
 </script>
 
 <div class="relative w-full max-w-5xl aspect-square mx-auto flex items-center justify-center">
-	<div bind:this={imageDom} class="w-full h-full flex items-center justify-center">
+	<div bind:this={imageDom} class="w-full h-full flex items-center justify-center relative">
 		<img
 			src="/images/bg.jpg"
 			class="absolute inset-0 w-full h-full aspect-square z-10"
 			alt="template"
 		/>
-
+		<div class="overlay absolute inset-0 z-20" style={`background-color: ${bgColor};`} />
 		<span
-			class="relative z-20"
-			style={`color: ${color}; font-size: var(--font-size); top: var(--top-position);`}
-			>{text}</span
+			class="relative z-30"
+			style={`color: ${color}; font-size: var(--font-size); top: var(--top-position);`}>{text}</span
 		>
 	</div>
 </div>
@@ -49,5 +49,11 @@
 <style>
 	span {
 		position: absolute;
+	}
+	.overlay {
+		mask-image: url('/images/bg-overlay.png');
+		mask-size: cover;
+		background-color: currentColor;
+		/* background-size: cover; */
 	}
 </style>
