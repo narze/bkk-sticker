@@ -179,6 +179,10 @@
 		<div class="text-center text-sm">
 			<a href="https://github.com/narze/bkk-sticker">Github</a>
 		</div>
+
+		<div class="text-center text-sm">
+			See also: <a href="https://working3times.narze.live">ทำงาน ทำงาน ทำงาน</a>
+		</div>
 	</div>
 </div>
 
