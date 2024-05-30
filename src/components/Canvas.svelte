@@ -4,9 +4,9 @@
 	export let imageDom: HTMLElement;
 
 	const thaiNumerals = ['๐', '๑', '๒', '๓', '๔', '๕', '๖', '๗', '๘', '๙'];
-	$: transformedText = isNaN(parseInt(text))
-		? text.replace(/\d/g, (digit) => thaiNumerals[parseInt(digit)])
-		: text;
+	$: if (isNaN(parseInt(text))) {
+		text = text.replace(/\d/g, (digit) => thaiNumerals[parseInt(digit)]);
+	}
 
 	function updateFontSizeAndPosition() {
 		if (imageDom) {
@@ -45,8 +45,7 @@
 
 		<span
 			class="relative z-20"
-			style={`color: ${color}; font-size: var(--font-size); top: var(--top-position);`}
-			>{transformedText}</span
+			style={`color: ${color}; font-size: var(--font-size); top: var(--top-position);`}>{text}</span
 		>
 	</div>
 </div>
