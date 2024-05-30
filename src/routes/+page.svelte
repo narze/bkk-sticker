@@ -71,7 +71,7 @@
 		htmlToImage
 			.toJpeg(imageDom)
 			.then(function (blob) {
-				saveAs(blob, `bkk-sticker.png`);
+				saveAs(blob, `bkk-sticker.jpg`);
 				// saving = false
 			})
 			.catch(function (error) {
