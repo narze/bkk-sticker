@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let color = '#fff';
-	export let bgColor = 'rgba(0, 0, 0, 0)';
+	export let bgColor = 'transparent';
 	export let text = '';
 	export let imageDom: HTMLElement;
 
@@ -38,7 +38,12 @@
 			class="absolute inset-0 w-full h-full aspect-square z-10"
 			alt="template"
 		/>
-		<div class="overlay absolute inset-0 z-20" style={`background-color: ${bgColor};`} />
+		{#if bgColor !== 'transparent'}
+			<div
+				class="overlay absolute inset-0 z-20"
+				style={`background-image: linear-gradient(black 45%, #111 47%, ${bgColor} 51%, ${bgColor} 58.5%, black 61%); opacity: 0.9`}
+			/>
+		{/if}
 		<span
 			class="relative z-30"
 			style={`color: ${color}; font-size: var(--font-size); top: var(--top-position);`}>{text}</span

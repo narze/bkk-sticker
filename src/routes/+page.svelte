@@ -25,7 +25,19 @@
 	let color: string = decodedData[1] || '#fff';
 	let pickerRef: HTMLButtonElement;
 	let imageDom: HTMLElement;
-	let bgColor = 'rgba(0, 0, 0, 0)';
+	let bgColor = 'transparent';
+
+	const ciColors = [
+		['สีพื้นหลัง', 'transparent'],
+		['Original', 'transparent'],
+		['เขียว 1', '#205a41'],
+		['เขียว 2', '#67a33b'],
+		['เขียว 3', '#00c08b'],
+		['ส้ม', '#ffb449'],
+		['เหลือง', '#f8df52'],
+		['น้ำเงิน', '#0071ce'],
+		['ม่วง', '#480086']
+	];
 
 	$: ogImageUrl = `https://bkk-sticker.vercel.app/i?t=${text}&c=${color.replace('#', '')}`;
 	$: encodedData = `${base64.urlEncode(text)},${base64.urlEncode(color)}`;
@@ -107,8 +119,18 @@
 
 	<div class="flex gap-4">
 		<button bind:this={pickerRef} class="bg-blue-500 hover: text-white font-bold py-2 px-4 rounded">
-			เปลี่ยนสี
+			สีตัวอักษร
 		</button>
+
+		<select
+			class="bg-blue-500 hover: text-white font-bold py-2 px-4 rounded"
+			on:change={(e) => (bgColor = e.target.value)}
+		>
+			{#each ciColors as [name, color]}
+				<option value={color}>{name}</option>
+			{/each}
+		</select>
+
 		<button
 			on:click={() => copyImage()}
 			class="bg-blue-500 hover: text-white font-bold py-2 px-4 rounded"
