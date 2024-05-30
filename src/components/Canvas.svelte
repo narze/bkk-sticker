@@ -44,7 +44,7 @@
 		<span
 			class="relative z-20"
 			style={`color: ${color}; font-size: var(--font-size); top: var(--top-position);`}
-			>{transformedText}</span
+			>{text}</span
 		>
 	</div>
 </div>
