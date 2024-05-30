@@ -33,21 +33,20 @@
 	});
 </script>
 
-<div
-	class="relative w-full max-w-5xl aspect-square mx-auto flex items-center justify-center overflow-visible"
-	bind:this={imageDom}
->
-	<img
-		src="/images/bg.jpg"
-		class="absolute inset-0 w-full h-full aspect-square z-10"
-		alt="template"
-	/>
+<div class="relative w-full max-w-5xl aspect-square mx-auto flex items-center justify-center">
+	<div bind:this={imageDom} class="w-full h-full flex items-center justify-center">
+		<img
+			src="/images/bg.jpg"
+			class="absolute inset-0 w-full h-full aspect-square z-10"
+			alt="template"
+		/>
 
-	<span
-		class="relative z-20"
-		style={`color: ${color}; font-size: var(--font-size); top: var(--top-position);`}
-		>{transformedText}</span
-	>
+		<span
+			class="relative z-20"
+			style={`color: ${color}; font-size: var(--font-size); top: var(--top-position);`}
+			>{transformedText}</span
+		>
+	</div>
 </div>
 
 <style>

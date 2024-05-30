@@ -54,7 +54,7 @@
 
 	function copyImage() {
 		htmlToImage
-			.toPng(imageDom)
+			.toJpeg(imageDom)
 			.then(function (dataUrl) {
 				const img = new Image();
 				img.src = dataUrl;
@@ -69,7 +69,7 @@
 
 	function saveImage() {
 		htmlToImage
-			.toPng(imageDom)
+			.toJpeg(imageDom)
 			.then(function (blob) {
 				saveAs(blob, `bkk-sticker.png`);
 				// saving = false
