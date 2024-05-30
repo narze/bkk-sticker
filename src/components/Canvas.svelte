@@ -3,9 +3,6 @@
 	export let text = '';
 	export let imageDom: HTMLElement;
 
-	// const thaiNumerals = ['๐', '๑', '๒', '๓', '๔', '๕', '๖', '๗', '๘', '๙'];
-	// $: transformedText = text.replace(/\d/g, (digit) => thaiNumerals[parseInt(digit)]);
-
 	function updateFontSizeAndPosition() {
 		if (imageDom) {
 			const parentHeight = imageDom.clientHeight;
