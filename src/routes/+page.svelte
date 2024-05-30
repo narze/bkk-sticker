@@ -43,8 +43,9 @@
 			};
 
 			// Gradually add text
+			const textToType = text;
 			text = '';
-			defaultText.split('').forEach((char, index) => {
+			textToType.split('').forEach((char, index) => {
 				setTimeout(() => {
 					text += char;
 				}, 42 * index);
@@ -140,7 +141,7 @@
 
 	<!-- Credits -->
 	<div>
-		<div class="text-center text-sm ">
+		<div class="text-center text-sm">
 			Credits: <a
 				href="https://www.facebook.com/TheNickplus/posts/pfbid0bewW8HjvXtQi6ZwbmWro6XGEbHjE9nyXt44viBYAWGWMnLxGNQ5xX37hZQs1PaaUl"
 				>Image</a
