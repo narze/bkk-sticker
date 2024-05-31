@@ -34,7 +34,7 @@
 <div class="relative w-full max-w-5xl aspect-square mx-auto flex items-center justify-center">
 	<div bind:this={imageDom} class="w-full h-full flex items-center justify-center relative">
 		<img
-			src="https://storage.googleapis.com/bkk-sticker/bg.jpg"
+			src="/images/bg.jpg"
 			class="absolute inset-0 w-full h-full aspect-square z-10"
 			alt="template"
 		/>
