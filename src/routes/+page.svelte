@@ -11,6 +11,9 @@
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 
+	import InAppSpy from "inapp-spy";
+	const { isInApp } = InAppSpy();
+
 	let data = $page.url.searchParams.get('d') || '';
 	let decodedData = data.split(',').map((d) => {
 		try {
@@ -55,14 +58,19 @@
 				color = pickedColor.hex.substring(0, 7);
 			};
 
-			// Gradually add text
-			const textToType = text;
-			text = '';
-			textToType.split('').forEach((char, index) => {
-				setTimeout(() => {
-					text += char;
-				}, 42 * index);
-			});
+			const save: boolean = $page.url.searchParams.get('save') === 'true';
+			if (!save) {
+				// Gradually add text
+				const textToType = text;
+				text = '';
+				textToType.split('').forEach((char, index) => {
+					setTimeout(() => {
+						text += char;
+					}, 42 * index);
+				});
+			} else {
+				saveImage();
+			}
 		}
 	});
 
@@ -85,8 +93,11 @@
 		htmlToImage
 			.toJpeg(imageDom)
 			.then(function (blob) {
-				saveAs(blob, `bkk-sticker.jpg`);
-				// saving = false
+				if (!isInApp) {
+					saveAs(blob, `bkk-sticker.jpg`);
+				} else {
+					window.location.href = `intent:${$page.url.origin}/?d=${encodedData}&save=true#Intent;end`;
+				}
 			})
 			.catch(function (error) {
 				console.error('oops, something went wrong!', error);

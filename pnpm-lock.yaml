@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      inapp-spy:
+        specifier: ^3.0.0
+        version: 3.0.0
     devDependencies:
       '@playwright/test':
         specifier: ^1.44.1
@@ -981,6 +985,9 @@ packages:
   imurmurhash@0.1.4:
     resolution: {integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==}
     engines: {node: '>=0.8.19'}
+
+  inapp-spy@3.0.0:
+    resolution: {integrity: sha512-xsPAKXY0GRGsd1+2VEQ03AoT2YvB+lLXzH8ZieA/DK6Bu7K0f99xFcHkNfBwP3YUJwQJBYegAG83eSGyAh1cJg==}
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
@@ -2573,6 +2580,8 @@ snapshots:
       optimist: 0.3.7
 
   imurmurhash@0.1.4: {}
+
+  inapp-spy@3.0.0: {}
 
   inflight@1.0.6:
     dependencies:
