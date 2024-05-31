@@ -135,7 +135,7 @@
 			on:click={() => copyImage()}
 			class="bg-blue-500 hover: text-white font-bold py-2 px-4 rounded"
 		>
-			ก็อปภาพ
+			ก๊อปภาพ
 		</button>
 		<button
 			on:click={() => saveImage()}
