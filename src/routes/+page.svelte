@@ -68,7 +68,7 @@
 
 	function copyImage() {
 		htmlToImage
-			.toJpeg(imageDom)
+			.toJpeg(imageDom, { canvasHeight: 512, canvasWidth: 512, cacheBust: true })
 			.then(function (dataUrl) {
 				const img = new Image();
 				img.src = dataUrl;
@@ -83,7 +83,7 @@
 
 	function saveImage() {
 		htmlToImage
-			.toJpeg(imageDom)
+			.toJpeg(imageDom, { canvasHeight: 512, canvasWidth: 512, cacheBust: true })
 			.then(function (blob) {
 				saveAs(blob, `bkk-sticker.jpg`);
 				// saving = false
