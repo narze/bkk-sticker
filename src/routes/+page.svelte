@@ -13,6 +13,10 @@
 
 	import InAppSpy from "inapp-spy";
 	const { isInApp } = InAppSpy();
+	const isIOS = () => {
+		const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+		return /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+	}
 
 	let data = $page.url.searchParams.get('d') || '';
 	let decodedData = data.split(',').map((d) => {
@@ -96,7 +100,11 @@
 				if (!isInApp) {
 					saveAs(blob, `bkk-sticker.jpg`);
 				} else {
-					window.location.href = `intent:${$page.url.origin}/?d=${encodedData}&save=true#Intent;end`;
+					if (isIOS()) {
+						window.location.href = `com-apple-mobilesafari-tab:https://bkk-sticker.vercel.app/?d=${encodedData}&save=true`;
+					} else {
+						window.location.href = `intent:https://bkk-sticker.vercel.app/?d=${encodedData}&save=true#Intent;end`;
+					}
 				}
 			})
 			.catch(function (error) {
